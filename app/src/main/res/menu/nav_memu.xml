@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Home"
+            android:icon="@mipmap/nav_selftimer"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_Setting"
+            android:icon="@mipmap/nav_settings"
+            android:title="Setting" />
+    </group>
+</menu>
