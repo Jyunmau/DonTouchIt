@@ -19,6 +19,21 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_margin="26dp"
+            android:elevation="8dp"
+            android:clickable="true"
+            app:srcCompat="@mipmap/buttom_add" />
+
     </FrameLayout>
 
     <android.support.design.widget.NavigationView
@@ -27,7 +42,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/nav_memu"
-        app:headerLayout="@layout/nav_header" />
+        app:headerLayout="@layout/nav_header" >
+
+    </android.support.design.widget.NavigationView>
 
 
 </android.support.v4.widget.DrawerLayout>
