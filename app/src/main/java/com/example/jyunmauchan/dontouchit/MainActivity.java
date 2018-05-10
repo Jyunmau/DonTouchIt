@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                taskList.add(new Task("我爱学习", R.mipmap.cdv_sc1));
+                taskList.add(new Task("我爱学习", R.mipmap.cdv_sc2));
                 recyclerView.scrollToPosition(taskAdapter.getItemCount() - 1);
                 taskAdapter.notifyDataSetChanged();
             }
