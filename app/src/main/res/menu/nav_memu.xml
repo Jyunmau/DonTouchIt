@@ -9,5 +9,9 @@
             android:id="@+id/nav_Setting"
             android:icon="@mipmap/nav_settings"
             android:title="Setting" />
+        <item
+            android:id="@+id/nav_About"
+            android:icon="@mipmap/nav_about"
+            android:title="About" />
     </group>
 </menu>

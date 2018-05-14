@@ -1,5 +1,7 @@
-package com.example.jyunmauchan.dontouchit;
+package com.example.jyunmauchan.dontouchit.activitys;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -7,13 +9,14 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-import android.widget.Toolbar;
+
+import com.example.jyunmauchan.dontouchit.R;
+import com.example.jyunmauchan.dontouchit.Task;
+import com.example.jyunmauchan.dontouchit.TaskAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +52,17 @@ public class MainActivity extends AppCompatActivity {
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent;
+                switch (item.getItemId()) {
+                    case R.id.nav_About:
+                        intent = new Intent(MainActivity.this, AboutActivity.class);
+                        startActivities(new Intent[]{intent});
+                        break;
+                    case R.id.nav_Home:
+                        intent = new Intent(MainActivity.this, MainActivity.class);
+                        startActivities(new Intent[]{intent});
+                        break;
+                }
                 mDrawerLayout.closeDrawers();
                 return true;
             }
@@ -58,9 +72,14 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TaskActivity.class);
+                startActivities(new Intent[]{intent});
+
+                /*
                 taskList.add(new Task("我爱学习", R.mipmap.cdv_sc2));
                 recyclerView.scrollToPosition(taskAdapter.getItemCount() - 1);
                 taskAdapter.notifyDataSetChanged();
+                */
             }
         });
 
