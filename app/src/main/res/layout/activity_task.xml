@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
+            android:paddingTop="5dp"
             android:hint="请输入任务名称"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 

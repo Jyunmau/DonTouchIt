@@ -1,7 +1,9 @@
 package com.example.jyunmauchan.dontouchit.activitys;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -13,6 +15,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
+
 
 import com.example.jyunmauchan.dontouchit.R;
 import com.example.jyunmauchan.dontouchit.Task;
@@ -29,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     private TaskAdapter taskAdapter;    // 任务列表视图的适配器对象
     private RecyclerView recyclerView;
 
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;    // 用于储存数据的变量
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);  // 滑动菜单中的布局
         ActionBar actionBar = getSupportActionBar();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);   // “新建”浮动按钮
+        pref = PreferenceManager.getDefaultSharedPreferences(this); // 定义存储变量
 
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);  // 显示导航按钮
@@ -73,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TaskActivity.class);
-                startActivities(new Intent[]{intent});
+                startActivityForResult(intent, 1);  // 请求返回数据，跳转到TaskActivity
 
                 /*
                 taskList.add(new Task("我爱学习", R.mipmap.cdv_sc2));
@@ -90,6 +97,27 @@ public class MainActivity extends AppCompatActivity {
         taskAdapter = new TaskAdapter(taskList);
         recyclerView.setAdapter(taskAdapter);
 
+    }
+
+    // 重写该方法来接收数据
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    String returnData = data.getStringExtra("data_return");
+                    taskList.add(new Task(returnData, R.mipmap.cdv_sc2));
+                    editor = pref.edit();
+                    // 存储列表，此处有问题@number
+                    for (int i = 0; i < taskList.size(); i++) {
+                        editor.remove("Status_" + i);
+                        editor.putString("Status_" + i, taskList.get(i).getName());
+                    }
+                    editor.apply();
+                    recyclerView.scrollToPosition(taskAdapter.getItemCount() - 1);
+                    taskAdapter.notifyDataSetChanged();
+                }
+        }
     }
 
     /*
