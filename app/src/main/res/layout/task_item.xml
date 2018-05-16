@@ -11,31 +11,63 @@
     android:clickable="true">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
             android:id="@+id/task_image"
             android:scaleType="centerCrop" />
 
-        <TextView
-            android:id="@+id/task_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:layout_margin="5dp"
-            android:textSize="16sp" />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/task_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:layout_margin="15dp"
+                android:textSize="50sp" />
 
-        <TextView
-            android:id="@+id/task_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:layout_margin="5dp"
-            android:textSize="16sp" />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp">
+
+                <TableRow
+                    android:layout_gravity="end">
+
+                    <TextView
+                        android:id="@+id/task_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:text="/"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/task_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="20sp" />
+
+                </TableRow>
+
+            </TableLayout>
+        </TableLayout>
+
+
+
 
     </LinearLayout>
 

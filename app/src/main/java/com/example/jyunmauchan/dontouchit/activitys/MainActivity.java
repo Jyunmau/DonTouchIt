@@ -65,8 +65,16 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, AboutActivity.class);
                         startActivities(new Intent[]{intent});
                         break;
+                    case R.id.nav_Finished:
+                        intent = new Intent(MainActivity.this, FinishedActivity.class);
+                        startActivities(new Intent[]{intent});
+                        break;
                     case R.id.nav_Home:
                         intent = new Intent(MainActivity.this, MainActivity.class);
+                        startActivities(new Intent[]{intent});
+                        break;
+                    case R.id.nav_Setting:
+                        intent = new Intent(MainActivity.this, LotteryActivity.class);
                         startActivities(new Intent[]{intent});
                         break;
                 }
@@ -91,10 +99,21 @@ public class MainActivity extends AppCompatActivity {
         // 每次重新打开活动时要读取数据重新建任务列表
         int num = pref.getInt("task_num", 0);
         for (int i = 0; i < num; i++) {
-            taskList.add(new Task(pref.getString("names_" + i, ""), pref.getInt("nums_" + i, 0), R.mipmap.cdv_sc2));
+            // 判断任务是否完成，若未完成加入显示链表
+            if (pref.getInt("counts_" + i, 0) < pref.getInt("nums_" + i, 0))
+                taskList.add(new Task(pref.getString("names_" + i, ""),
+                        pref.getInt("nums_" + i, 0), pref.getInt("counts_" + i, 0), R.mipmap.task_unfinished));
         }
         taskAdapter = new TaskAdapter(taskList);
         recyclerView.setAdapter(taskAdapter);
+
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TimerActivity.class);
+                startActivity(intent);  // 跳转到TimerActivity
+            }
+        });
 
     }
 
@@ -105,15 +124,21 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 if (resultCode == RESULT_OK) {
                     String returnData = data.getStringExtra("data_return");
-                    int returnInt = data.getIntExtra("int_return", 0);
-                    taskList.add(new Task(returnData, returnInt, R.mipmap.cdv_sc2));
+                    int returnInt = data.getIntExtra("num_return", 0);
+                    taskList.add(new Task(returnData, returnInt, 0, R.mipmap.task_unfinished));
                     editor = pref.edit();
                     // 存储列表， 取出编号后加一
                     int num = pref.getInt("task_num", 0);
+                    // 存任务名字
                     editor.remove("names_" + num);
                     editor.putString("names_" + num, returnData);
+                    // 存总计单位时间数
                     editor.remove("nums_" + num);
                     editor.putInt("nums_" + num, returnInt);
+                    // 存已完成的单位时间数
+                    editor.remove("counts_" + num);
+                    editor.putInt("counts_" + num, 0);
+                    // 存入任务总数，即编号最大值，从0开始
                     num++;
                     editor.remove("task_num");
                     editor.putInt("task_num", num);

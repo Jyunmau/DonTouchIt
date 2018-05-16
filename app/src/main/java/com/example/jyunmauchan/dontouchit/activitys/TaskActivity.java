@@ -17,6 +17,7 @@ public class TaskActivity extends AppCompatActivity {
 
     private EditText taskname;  // 输入框对象：任务名字
     private NumberPicker mNumberPicker = null; // 数值选择器
+    private int t_num = 5;
 
 
     @Override
@@ -52,6 +53,7 @@ public class TaskActivity extends AppCompatActivity {
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 Toast.makeText(TaskActivity.this, "选择的是：" + newVal,
                         Toast.LENGTH_SHORT).show();
+                t_num = newVal;
             }
         });
 
@@ -60,7 +62,7 @@ public class TaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String t_name = taskname.getText().toString();
-                int t_number = mNumberPicker.getValue();
+                int t_number = t_num;
                 String s = taskname.getText().toString().trim();
                 if (!TextUtils.isEmpty(s)){
                     Intent intent = new Intent();
@@ -70,12 +72,9 @@ public class TaskActivity extends AppCompatActivity {
                     finish();
                 }
 
-
-
             }
         });
 
     }
-
 
 }

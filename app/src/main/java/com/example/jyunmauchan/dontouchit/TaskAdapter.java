@@ -26,14 +26,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         CardView cardview;
         ImageView taskImage;
         TextView taskName;
-        TextView tasknum;
+        TextView taskNum;
+        TextView taskCount;
 
         public ViewHolder(View view) {
             super(view);
             cardview = (CardView) view;
             taskImage = (ImageView) view.findViewById(R.id.task_image);
             taskName = (TextView) view.findViewById(R.id.task_name);
-            tasknum = (TextView) view.findViewById(R.id.task_num);
+            taskNum = (TextView) view.findViewById(R.id.task_num);
+            taskCount = (TextView) view.findViewById(R.id.task_count);
         }
     }
 
@@ -54,7 +56,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         Task task = mTaskList.get(position);
         holder.taskName.setText(task.getName());
-        holder.tasknum.setText(task.getNum());
+        holder.taskNum.setText(Integer.toString(task.getNum()));
+        holder.taskCount.setText(Integer.toString(task.getCount()));
         Glide.with(mContext).load(task.getImageId()).into(holder.taskImage);
     }
 

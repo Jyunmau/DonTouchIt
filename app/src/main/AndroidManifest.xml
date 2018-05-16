@@ -22,7 +22,11 @@
         <activity
             android:name=".activitys.AboutActivity"
             android:label="About" />
-        <activity android:name=".activitys.TimerActivity"></activity>
+        <activity android:name=".activitys.TimerActivity" />
+        <activity android:name=".activitys.FinishedActivity"
+            android:label="Finished"/>
+        <activity android:name=".activitys.LotteryActivity"
+            android:label="Lottery"/>
     </application>
 
 </manifest>

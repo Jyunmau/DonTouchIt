@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+
+    <ImageView
+        android:id="@+id/gou"
+        android:layout_width="149dp"
+        android:layout_height="130dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096"
+        android:src="@mipmap/p1" />
+
+    <ImageView
+        android:id="@+id/high"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/p2" />
+
+    <ImageView
+        android:id="@+id/low"
+        android:layout_width="189dp"
+        android:layout_height="192dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.597"
+        app:srcCompat="@mipmap/p3" />
+
+    <ImageView
+        android:id="@+id/pie"
+        android:layout_width="191dp"
+        android:layout_height="188dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.589"
+        app:srcCompat="@mipmap/p4" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="抽奖"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.941" />
+
+    <TextView
+        android:id="@+id/highcount"
+        android:layout_width="30dp"
+        android:layout_height="19dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="x0"
+        app:layout_constraintBottom_toTopOf="@+id/pie"
+        app:layout_constraintEnd_toEndOf="@+id/high"
+        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintStart_toStartOf="@+id/high"
+        app:layout_constraintTop_toTopOf="@+id/high"
+        app:layout_constraintVertical_bias="0.825" />
+
+    <TextView
+        android:id="@+id/goucount"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="x0"
+        app:layout_constraintBottom_toBottomOf="@+id/gou"
+        app:layout_constraintEnd_toEndOf="@+id/gou"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/gou"
+        app:layout_constraintTop_toTopOf="@+id/gou"
+        app:layout_constraintVertical_bias="0.956" />
+
+    <TextView
+        android:id="@+id/piecount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="x0"
+        app:layout_constraintBottom_toBottomOf="@+id/pie"
+        app:layout_constraintEnd_toEndOf="@+id/pie"
+        app:layout_constraintHorizontal_bias="0.856"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/high"
+        app:layout_constraintVertical_bias="0.753" />
+
+    <TextView
+        android:id="@+id/lowcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="x0"
+        app:layout_constraintBottom_toBottomOf="@+id/low"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="@+id/low"
+        app:layout_constraintTop_toTopOf="@+id/low"
+        app:layout_constraintVertical_bias="0.751" />
+
+    <Button
+        android:id="@+id/tog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="合并"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.685"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.941" />
+
+
+</android.support.constraint.ConstraintLayout>

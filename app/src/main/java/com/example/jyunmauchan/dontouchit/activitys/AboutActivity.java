@@ -43,10 +43,22 @@ public class AboutActivity extends AppCompatActivity {
                     case R.id.nav_About:
                         intent = new Intent(AboutActivity.this, AboutActivity.class);
                         startActivities(new Intent[]{intent});
+                        finish();
+                        break;
+                    case R.id.nav_Finished:
+                        intent = new Intent(AboutActivity.this, FinishedActivity.class);
+                        startActivities(new Intent[]{intent});
+                        finish();
                         break;
                     case R.id.nav_Home:
                         intent = new Intent(AboutActivity.this, MainActivity.class);
                         startActivities(new Intent[]{intent});
+                        finish();
+                        break;
+                    case R.id.nav_Setting:
+                        intent = new Intent(AboutActivity.this, LotteryActivity.class);
+                        startActivities(new Intent[]{intent});
+                        finish();
                         break;
                 }
                 mDrawerLayout.closeDrawers();
