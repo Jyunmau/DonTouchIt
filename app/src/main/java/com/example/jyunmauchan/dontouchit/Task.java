@@ -9,13 +9,20 @@ public class Task {
 
     private int imageId;
 
-    public Task(String name, int imageId) {
+    private int num;
+
+    public Task(String name, int num, int imageId) {
         this.name = name;
         this.imageId = imageId;
+        this.num = num;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getNum() {
+        return num;
     }
 
     public int getImageId() {

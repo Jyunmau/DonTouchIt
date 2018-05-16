@@ -1,12 +1,12 @@
 package com.example.jyunmauchan.dontouchit;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.support.v7.widget.CardView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -26,12 +26,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         CardView cardview;
         ImageView taskImage;
         TextView taskName;
+        TextView tasknum;
 
         public ViewHolder(View view) {
             super(view);
             cardview = (CardView) view;
             taskImage = (ImageView) view.findViewById(R.id.task_image);
             taskName = (TextView) view.findViewById(R.id.task_name);
+            tasknum = (TextView) view.findViewById(R.id.task_num);
         }
     }
 
@@ -52,6 +54,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         Task task = mTaskList.get(position);
         holder.taskName.setText(task.getName());
+        holder.tasknum.setText(task.getNum());
         Glide.with(mContext).load(task.getImageId()).into(holder.taskImage);
     }
 

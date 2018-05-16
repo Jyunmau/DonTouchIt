@@ -4,9 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_margin="15dp"
     app:cardCornerRadius="4dp"
-    app:elevation="5dp">
+    app:elevation="5dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true">
 
     <LinearLayout
         android:orientation="vertical"
@@ -21,6 +23,14 @@
 
         <TextView
             android:id="@+id/task_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:layout_margin="5dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/task_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"

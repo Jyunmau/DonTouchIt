@@ -81,12 +81,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TaskActivity.class);
                 startActivityForResult(intent, 1);  // 请求返回数据，跳转到TaskActivity
-
-                /*
-                taskList.add(new Task("我爱学习", R.mipmap.cdv_sc2));
-                recyclerView.scrollToPosition(taskAdapter.getItemCount() - 1);
-                taskAdapter.notifyDataSetChanged();
-                */
             }
         });
 
@@ -94,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(layoutManager);
+        // 每次重新打开活动时要读取数据重新建任务列表
+        int num = pref.getInt("task_num", 0);
+        for (int i = 0; i < num; i++) {
+            taskList.add(new Task(pref.getString("names_" + i, ""), pref.getInt("nums_" + i, 0), R.mipmap.cdv_sc2));
+        }
         taskAdapter = new TaskAdapter(taskList);
         recyclerView.setAdapter(taskAdapter);
 
@@ -106,14 +105,20 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 if (resultCode == RESULT_OK) {
                     String returnData = data.getStringExtra("data_return");
-                    taskList.add(new Task(returnData, R.mipmap.cdv_sc2));
+                    int returnInt = data.getIntExtra("int_return", 0);
+                    taskList.add(new Task(returnData, returnInt, R.mipmap.cdv_sc2));
                     editor = pref.edit();
-                    // 存储列表，此处有问题@number
-                    for (int i = 0; i < taskList.size(); i++) {
-                        editor.remove("Status_" + i);
-                        editor.putString("Status_" + i, taskList.get(i).getName());
-                    }
+                    // 存储列表， 取出编号后加一
+                    int num = pref.getInt("task_num", 0);
+                    editor.remove("names_" + num);
+                    editor.putString("names_" + num, returnData);
+                    editor.remove("nums_" + num);
+                    editor.putInt("nums_" + num, returnInt);
+                    num++;
+                    editor.remove("task_num");
+                    editor.putInt("task_num", num);
                     editor.apply();
+                    // 刷新布局
                     recyclerView.scrollToPosition(taskAdapter.getItemCount() - 1);
                     taskAdapter.notifyDataSetChanged();
                 }
